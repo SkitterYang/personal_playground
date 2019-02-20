@@ -1,24 +1,20 @@
 #include <iostream>
 
-#include "ywy/log.h"
-#include "leetcode/leetcode.h"
-#include "playground/playground.h"
-
 #include <sstream>
 #include <iostream>
 #include <string>
+#include <typeinfo>
 
-// #include <glog/logging.h>
+template<typename T>
+struct ClassNameHelper {
+    T name;
+};
 
 int main() {
-    std::stringstream logss;
-    logss.str("");
-
-    std::string teststr("1:3;23:2");
-    if (teststr.find("sadf") == std::string::npos) {
-        std::cout << "not found" << std::endl;
-    }
-    std::cout << teststr.find(",") << std::endl;
-    // LOG(INFO) << "test Glog";
+    struct ClassNameHelper<std::string> test;
+    test.name = "etst";
+    std::cout << test.name;
+    std::cout << std::endl;
+    std::cout << typeid(std::string).name();
     return 0;
 }
