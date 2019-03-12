@@ -89,7 +89,7 @@ int main() {
     struct ClassNameHelper<std::string> test;
     ConfType conftype;
     std::string manul_str = "carnet,lalala,hahhahahwheo,hasdo";
-    std::string test_str = ywy::random_str_list(10000) +
+    std::string test_str = ywy::random_str_list(10) +
         manul_str;
     conftype.init(test_str);
     conftype.search_str("carnet");

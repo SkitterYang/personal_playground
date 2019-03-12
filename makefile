@@ -1,10 +1,10 @@
 CC=g++
 
 mainSource = main.cpp
-leetcodeSource = leetcode/leetcode.cpp
-leetcodeHeader = leetcode/leetcode.h
-ywySource = playground/playground.cpp ywy/*.cpp
-ywyHeader = playground/playground.h ywy/*.h
+leetcodeSource = leetcode/*.cpp
+leetcodeHeader = leetcode/*.h
+ywySource = playground/*.cpp ywy/*.cpp
+ywyHeader = playground/*.h ywy/*.h
 
 flags= -std=c++11
 
