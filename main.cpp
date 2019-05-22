@@ -5,6 +5,8 @@
 #include <string>
 #include <typeinfo>
 #include <vector>
+#include <map>
+#include <queue>
 
 #include "ywy/utils.h"
 
@@ -83,17 +85,76 @@ public:
         std::cout << "time: " << end_t - begin_t << std::endl;
         std::cout << "------" << std::endl;
     }
+
+    void test() {
+        std::string manul_str = "carnet,lalala,hahhahahwheo,hasdo";
+        std::string test_str = ywy::random_str_list(10) +
+            manul_str;
+        init(test_str);
+        search_str("carnet");
+        search_str("hasdo");
+        search_str("hadasdo");
+    }
 };
+
+class QueueTest{
+    public:
+    QueueTest(){}
+    ~QueueTest(){}
+    void test(){
+        std::queue<int*> testqueue;
+        int* i = new int();
+        *i = 100;
+        testqueue.push(i);
+        int* j;
+        j = testqueue.front();
+        if (j == NULL){
+            std::cout << "j is NULL"
+                << std::endl;
+        } else {
+            std::cout << "j is:"
+                << *j
+                << std::endl;
+        }
+    }
+};
+
+bool vaild_coord(const char *str){
+    std::cout << str << std::endl;
+    if (strncmp(str, "wgs84", 5) != 0 and strncmp(str, "bd09", 4) != 0){
+        std::cout << "step 1 false" << std::endl;
+        return false;
+    }
+    int len = strlen(str);
+	if (strcmp(str + len - 2, "ll") != 0 and strcmp(str + len - 2, "mc") != 0) {
+        std::cout << "step 2 false" << std::endl;
+        return false;
+    }
+    return true;
+}
 
 int main() {
     struct ClassNameHelper<std::string> test;
+
+    std::cout << "test start" << std::endl;
+    std::string teststr = "wgs84ll";
+    if (vaild_coord(teststr.c_str())){
+        std::cout << "true";
+    }
+    else {
+        std::cout << "false";
+    }
+    std::cout << std::endl;
+    int testint = 0;
+    if (not testint) {
+        std::cout << "not -1" << std::endl;
+    }
+    std::cout << "test finish" << std::endl;
+
     ConfType conftype;
-    std::string manul_str = "carnet,lalala,hahhahahwheo,hasdo";
-    std::string test_str = ywy::random_str_list(10) +
-        manul_str;
-    conftype.init(test_str);
-    conftype.search_str("carnet");
-    conftype.search_str("hasdo");
-    conftype.search_str("hadasdo");
+    // conftype.test();
+
+    QueueTest queuetest;
+    queuetest.test();
     return 0;
 }
